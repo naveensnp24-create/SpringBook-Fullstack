@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>tickets</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Tickets</h1>
+<a href="/tickets/new">Book New Tickets</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>UserName</th>
+        <th>TrainName</th>
+        <th>BookingDate</th>
+        <th>FinalPrice</th>
+        <th>Actions</th>    
+    </tr>
+    <tr th:each="ticket : ${tickets}">
+        <td th:text="${ticket.id}"></td>
+        <td th:text="${ticket.user.name}"></td>
+        <td th:text="${ticket.train.name}"></td>
+        <td th:text="${ticket.bookingDate}"></td>
+        <td th:text="${ticket.finalPrice}"></td>
+        <td>
+            <a th:href="@{/tickets/edit/{id}(id=${ticket.id})}">Edit</a>
+            <a th:href="@{/tickets/delete/{id}(id=${ticket.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
